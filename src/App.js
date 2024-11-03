@@ -1,6 +1,5 @@
-// src/App.js
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import LoginPage from './pages/LoginPage';
 import Dashboard from './pages/Dashboard';
 import PrivateRoute from './components/PrivateRoute';
@@ -8,10 +7,10 @@ import PrivateRoute from './components/PrivateRoute';
 const App = () => {
     return (
         <Router>
-            <Switch>
-                <Route path="/login" component={LoginPage} />
-                <PrivateRoute path="/dashboard" component={Dashboard} />
-            </Switch>
+            <Routes>
+                <Route path="/login" element={<LoginPage />} />
+                <Route path="/dashboard" element={<PrivateRoute><Dashboard /></PrivateRoute>} />
+            </Routes>
         </Router>
     );
 };

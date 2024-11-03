@@ -1,22 +1,22 @@
 import React, { useContext, useState } from 'react';
 import AuthContext from '../context/AuthContext';
-import axios from 'axios';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Container, TextField, Button, Typography, Box, Alert } from '@mui/material';
+import api from '../services/api';
 
 const LoginPage = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState(null);
     const { login } = useContext(AuthContext);
-    const history = useHistory();
+    const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('/api/login', { email, password });
+            const response = await api.post('/api/login', { email, password });
             login(response.data.access_token);
-            history.push('/dashboard');
+            navigate('/dashboard');
         } catch (error) {
             setError('Invalid email or password');
         }

@@ -1,13 +1,12 @@
-// src/pages/Dashboard.js
 import React from 'react';
 import { Container, Typography, Box, Button } from '@mui/material';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const Dashboard = () => {
-    const history = useHistory();
+    const navigate = useNavigate();
 
     const handleQueryDosage = () => {
-        history.push('/query-dosage');
+        navigate('/query-dosage');
     };
 
     return (
