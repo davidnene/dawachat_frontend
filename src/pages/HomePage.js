@@ -6,7 +6,7 @@ const HomePage = () => {
     const navigate = useNavigate();
 
     const goToDashboard = () => {
-        navigate('/dashboard'); // Replace with the path to your dashboard or login
+        navigate('/login'); 
     };
 
     return (
@@ -19,7 +19,7 @@ const HomePage = () => {
                 style={{ minHeight: '80vh' }}
             >
                 <Typography variant="h2" gutterBottom className="display-4">
-                    Welcome to Doctor Dosage System
+                    Welcome to Dawa Chat
                 </Typography>
                 <Typography variant="h5" className="lead text-muted mb-4">
                     A powerful tool to help doctors manage dosage information and prescriptions with ease.
