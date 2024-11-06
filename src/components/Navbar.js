@@ -18,7 +18,7 @@ const Navbar = () => {
             <Toolbar>
                 <Typography variant="h6" component="div" style={{ flexGrow: 1 }}>
                     <Link to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
-                        Doctor Dosage System
+                        Dawa Chat
                     </Link>
                 </Typography>
                 <Box>
