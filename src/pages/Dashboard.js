@@ -13,7 +13,7 @@ const Dashboard = () => {
         <Container maxWidth="md" style={{ marginTop: '2rem' }}>
             <Box textAlign="center">
                 <Typography variant="h3" gutterBottom>
-                    Welcome to the Dashboard
+                    Welcome to the Dosage Dashboard
                 </Typography>
                 <Typography variant="body1" gutterBottom>
                     Use the tools here to query dosage information and manage prescriptions.
