@@ -22,9 +22,9 @@ function Dashboard() {
 
   return (
     <div className="container mt-5">
-      <Typography variant="h4" className="mb-4 text-center">
+      {/* <Typography variant="h4" className="mb-4 text-center">
         Dashboard
-      </Typography>
+      </Typography> */}
         {/* Outbreak Alerts */}
         {dashboardData.diseaseFrequency
           .filter((disease) => disease.value > 15) // Filter for outbreaks
