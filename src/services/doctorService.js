@@ -12,3 +12,7 @@ export const getDoctors = async () => {
 export const updateDoctor = async (doctorId, doctorData) => {
   return await api.put(`/api/update-doctor/${doctorId}`, doctorData);
 };
+
+export const deleteDoctor = async (doctorId, doctorData) => {
+  return await api.put(`/api/delete-doctor/${doctorId}`, doctorData);
+};
