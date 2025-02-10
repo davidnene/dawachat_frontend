@@ -14,5 +14,5 @@ export const updateDoctor = async (doctorId, doctorData) => {
 };
 
 export const deleteDoctor = async (doctorId, doctorData) => {
-  return await api.put(`/api/delete-doctor/${doctorId}`, doctorData);
+  return await api.delete(`/api/delete-doctor/${doctorId}`, doctorData);
 };

@@ -49,14 +49,13 @@ const DoctorManagement = () => {
         email: formData.email,
         specialty: formData.specialty,
         password: formData.password,
-        role: "doctor",  // Assign the correct role
-        hospital_id: user.hospital_id // Ensure the doctor is assigned to the admin's hospital
+        role: "doctor",
       };
   
       if (formData.id) {
-        await updateDoctor(formData.id, payload); // Update existing doctor
+        await updateDoctor(formData.id, payload); 
       } else {
-        await createDoctor(payload); // Create new doctor
+        await createDoctor(payload);
       }
   
       fetchDoctors();
