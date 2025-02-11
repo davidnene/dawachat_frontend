@@ -9,7 +9,6 @@ import { getPatients } from "../services/patientService";
 import {
   Button,
   TextField,
-  Grid,
   Dialog,
   DialogTitle,
   DialogContent,
@@ -83,18 +82,41 @@ const ManagePrescriptions = () => {
   };
 
   const handleSubmit = async () => {
+    if (!formData.medication || !formData.dosage || !formData.diagnosis) {
+      alert("Medication, dosage, and diagnosis are required!");
+      return;
+    }
+
+    if (!selectedPatient) {
+      alert("Please select a patient first!");
+      return;
+    }
+
     try {
+      const payload = {
+        medication: formData.medication,
+        dosage: formData.dosage,
+        observations: formData.observations || "",
+        diagnosis: formData.diagnosis,
+        diseases_type: formData.diseases_type || "non_communicable",
+        treatment_plan: formData.treatment_plan || "",
+        doctor_notes: formData.doctor_notes || "",
+      };
+
       if (formData.id) {
-        await updatePrescription(formData.id, formData);
+        await updatePrescription(formData.id, payload);
       } else {
-        await createPrescription(selectedPatient, formData);
+        await createPrescription(selectedPatient, payload);
       }
+
       fetchPrescriptions(selectedPatient);
       handleEditClose();
     } catch (error) {
-      console.error("Error saving prescription:", error);
+      console.error("Error submitting prescription:", error.response?.data || error);
+      alert("Failed to save prescription. Check input values.");
     }
-  };
+};
+
 
   const handleDelete = async (id) => {
     if (!window.confirm("Are you sure?")) return;
@@ -143,7 +165,7 @@ const ManagePrescriptions = () => {
 
   return (
     <div style={{ width: "100%", padding: "20px" }}>
-      <h2>Manage Prescriptions</h2>
+      <h5>Manage Prescriptions</h5>
 
       {/* Select Patient */}
       <TextField
@@ -184,10 +206,18 @@ const ManagePrescriptions = () => {
       <Dialog open={editOpen} onClose={handleEditClose}>
         <DialogTitle>{formData.id ? "Edit Prescription" : "Add Prescription"}</DialogTitle>
         <DialogContent>
-          <TextField label="Medication" fullWidth value={formData.medication || ""} onChange={(e) => setFormData({ ...formData, medication: e.target.value })} sx={{ mb: 2 }} />
-          <TextField label="Dosage" fullWidth value={formData.dosage || ""} onChange={(e) => setFormData({ ...formData, dosage: e.target.value })} sx={{ mb: 2 }} />
-          <TextField label="Diagnosis" fullWidth value={formData.diagnosis || ""} onChange={(e) => setFormData({ ...formData, diagnosis: e.target.value })} sx={{ mb: 2 }} />
+            <TextField label="Medication" fullWidth value={formData.medication || ""} onChange={(e) => setFormData({ ...formData, medication: e.target.value })} sx={{ mb: 2 }} />
+            <TextField label="Dosage" fullWidth value={formData.dosage || ""} onChange={(e) => setFormData({ ...formData, dosage: e.target.value })} sx={{ mb: 2 }} />
+            <TextField label="Observations" fullWidth value={formData.observations || ""} onChange={(e) => setFormData({ ...formData, observations: e.target.value })} sx={{ mb: 2 }} />
+            <TextField label="Diagnosis" fullWidth value={formData.diagnosis || ""} onChange={(e) => setFormData({ ...formData, diagnosis: e.target.value })} sx={{ mb: 2 }} />
+            <TextField select label="Disease Type" fullWidth value={formData.diseases_type || "non_communicable"} onChange={(e) => setFormData({ ...formData, diseases_type: e.target.value })} sx={{ mb: 2 }}>
+                <MenuItem value="communicable">Communicable</MenuItem>
+                <MenuItem value="non_communicable">Non-Communicable</MenuItem>
+            </TextField>
+            <TextField label="Treatment Plan" fullWidth value={formData.treatment_plan || ""} onChange={(e) => setFormData({ ...formData, treatment_plan: e.target.value })} sx={{ mb: 2 }} />
+            <TextField label="Doctor Notes" fullWidth multiline rows={3} value={formData.doctor_notes || ""} onChange={(e) => setFormData({ ...formData, doctor_notes: e.target.value })} sx={{ mb: 2 }} />
         </DialogContent>
+
         <DialogActions>
           <Button onClick={handleEditClose}>Cancel</Button>
           <Button onClick={handleSubmit} variant="contained" color="primary">
