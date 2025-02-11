@@ -17,7 +17,7 @@ const Header = () => {
       <Toolbar>
         {/* Push user details slightly to the right */}
         <Box sx={{ flexGrow: 1, ml: 8 }}>  
-          <Typography variant="h6">
+          <Typography variant="contained">
             {user.hospital.name} - {user.name} ({user.role})
           </Typography>
         </Box>
