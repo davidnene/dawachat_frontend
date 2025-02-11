@@ -22,8 +22,11 @@ api.interceptors.request.use(
         return config;
     },
     (error) => {
-        // Handle request error
-        return Promise.reject(error);
+        if (error.response && error.response.status === 401) {
+            localStorage.clear();
+            window.location.href = "/";
+          }
+          return Promise.reject(error);
     }
 );
 
