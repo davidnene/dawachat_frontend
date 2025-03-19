@@ -11,7 +11,8 @@ function VisualizationCard({ title, data, type }) {
       {
         label: title,
         data: data.map((item) => item.value),
-        backgroundColor: ["#1976d2", "#f50057", "#ff9800", "#4caf50"],
+        backgroundColor: ["#1565c0", "#0d47a1", "#42a5f5", "#d3d3d3"]
+        ,
       },
     ],
   };
