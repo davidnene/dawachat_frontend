@@ -1,34 +1,66 @@
-import React from 'react';
-import { Container, Typography, Box, Button } from '@mui/material';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import { Grid, Typography } from "@mui/material";
+import VisualizationCard from "../components/VisualizationCard";
+import AlertCard from "../components/AlertCard";
+import { fetchDashboardData } from "../services/dashboardService";
 
-const Dashboard = () => {
-    const navigate = useNavigate();
 
-    const handleQueryDosage = () => {
-        navigate('/query-dosage');
-    };
+function Dashboard() {
+  const [dashboardData, setDashboardData] = useState({
+    diseaseFrequency: [],
+    patientDemographics: [],
+    alerts: [],
+  });
 
-    return (
-        <Container maxWidth="md" style={{ marginTop: '2rem' }}>
-            <Box textAlign="center">
-                <Typography variant="h3" gutterBottom>
-                    Welcome to the Dosage Dashboard
-                </Typography>
-                <Typography variant="body1" gutterBottom>
-                    Use the tools here to query dosage information and manage prescriptions.
-                </Typography>
-                <Button 
-                    variant="contained" 
-                    color="primary" 
-                    style={{ marginTop: '1rem' }}
-                    onClick={handleQueryDosage}
-                >
-                    Query Dosage
-                </Button>
-            </Box>
-        </Container>
-    );
-};
+  useEffect(() => {
+    async function fetchData() {
+      const data = await fetchDashboardData();
+      setDashboardData(data);
+    }
+    fetchData();
+  }, []);
+
+  return (
+    <div className="container mt-5">
+      {/* <Typography variant="h4" className="mb-4 text-center">
+        Dashboard
+      </Typography> */}
+        {/* Outbreak Alerts */}
+        {dashboardData.diseaseFrequency
+          .filter((disease) => disease.value > 15) // Filter for outbreaks
+          .map((disease) => (
+            <Grid item xs={12} md={4} key={disease.label}>
+              <AlertCard disease={disease.label} frequency={disease.value} />
+            </Grid>
+          ))}
+      <Grid container spacing={3}>
+        {/* Visualization Cards */}
+        <Grid item xs={12} md={6}>
+          <VisualizationCard
+            title="Disease Frequency"
+            data={dashboardData.diseaseFrequency}
+            type="bar"
+          />
+        </Grid>
+        <Grid item xs={12} md={6}>
+          <VisualizationCard
+            title="Patient Demographics"
+            data={dashboardData.patientDemographics}
+            type="pie"
+          />
+        </Grid>
+
+         
+
+          {/* Outbreak Alerts
+        {dashboardData.diseaseFrequency.map((disease) => (
+          <Grid item xs={12} md={4} key={disease.label}>
+            <AlertCard disease={disease.label} frequency={disease.value} />
+          </Grid>
+        ))} */}
+      </Grid>
+    </div>
+  );
+}
 
 export default Dashboard;

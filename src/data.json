@@ -1,0 +1,29 @@
+{
+    "diseaseFrequency": [
+      { "label": "Dengue Fever", "value": 15 },
+      { "label": "Malaria", "value": 26 },
+      { "label": "Influenza", "value": 10 },
+      { "label": "Cholera", "value": 5 }
+    ],
+    "patientDemographics": [
+      { "label": "Children (0-12)", "value": 40 },
+      { "label": "Teens (13-19)", "value": 20 },
+      { "label": "Adults (20-59)", "value": 50 },
+      { "label": "Seniors (60+)", "value": 10 }
+    ],
+    "alerts": [
+      {
+        "disease": "Dengue Fever",
+        "frequency": 15,
+        "timestamp": "2025-01-27T09:00:00Z",
+        "alertLevel": "High"
+      },
+      {
+        "disease": "Malaria",
+        "frequency": 25,
+        "timestamp": "2025-01-26T14:00:00Z",
+        "alertLevel": "Critical"
+      }
+    ]
+  }
+  
