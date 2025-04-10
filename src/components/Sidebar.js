@@ -3,7 +3,7 @@ import {
   Drawer, List, ListItem, ListItemButton, ListItemIcon, ListItemText, 
   IconButton, Box, useMediaQuery 
 } from "@mui/material";
-import { Dashboard, LocalHospital, People, Person, Description, Logout, Menu as MenuIcon } from "@mui/icons-material";
+import { Dashboard, LocalHospital, People, Person, Description, Logout, Menu as MenuIcon, HealthAndSafety } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
 import AuthContext from "../context/AuthContext";
 import { useTheme } from "@mui/material/styles";
@@ -35,6 +35,7 @@ const Sidebar = () => {
     if (user.role === "admin") {
       links.push({ text: "Manage Doctors", path: "/manage-doctors", icon: <Person /> });
       links.push({ text: "Manage Patients", path: "/manage-patients", icon: <People /> });
+      links.push({ text: "Doctor Stress Logs", path: "/stress-logs", icon: <HealthAndSafety /> });
     }
 
     if (user.role === "doctor") {

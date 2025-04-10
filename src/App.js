@@ -10,8 +10,9 @@ import QueryDosagePage from "./pages/QueryDosagePage";
 import PrescriptionPage from "./pages/PrescriptionPage";
 import ManageAdminsPage from "./pages/ManageAdminsPage";
 import ManageHospitalsPage from "./pages/ManageHospitalsPage";
-import ManagePatientsPage from "./pages/ManagePatientsPage";
+import ManagePatientsPage from "./pages/ManagePatientsPage_";
 import ManageDoctorsPage from "./pages/ManageDoctorsPage";
+import DoctorStressLogsPage from "./pages/DoctorStressLogsPage"
 import PatientsPage from "./pages/PatientsPage";
 import PrivateRoute from "./components/PrivateRoute";
 import Sidebar from "./components/Sidebar";
@@ -38,6 +39,8 @@ const App = () => {
           <Route path="/manage-hospitals" element={<PrivateRoute><ManageHospitalsPage /></PrivateRoute>} />
           <Route path="/manage-patients" element={<PrivateRoute><ManagePatientsPage /></PrivateRoute>} />
           <Route path="/manage-doctors" element={<PrivateRoute><ManageDoctorsPage /></PrivateRoute>} />
+          <Route path="/stress-logs" element={<PrivateRoute><DoctorStressLogsPage/></PrivateRoute>} />
+
         </Routes>
       </Router>
     </ThemeProvider>

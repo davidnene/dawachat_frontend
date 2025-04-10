@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Grid, Typography, Box } from "@mui/material";
+import { Grid, Box } from "@mui/material";
 import VisualizationCard from "../components/VisualizationCard";
 import AlertCard from "../components/AlertCard";
 import { fetchDashboardData } from "../services/dashboardService";
