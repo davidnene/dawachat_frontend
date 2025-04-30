@@ -20,4 +20,4 @@ EXPOSE 3000
 
 # Start Nginx server
 # CMD ["nginx", "-g", "daemon off;"]
-CMD ["npm", "start", "--host", "0.0.0.0"]
+CMD ["npm", "start", "--host", "0.0.0.0", "--port", "80"]
