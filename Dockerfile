@@ -16,8 +16,8 @@ COPY . .
 # COPY --from=build /app/build /usr/share/nginx/html
 
 # Expose port 80
-EXPOSE 80
+EXPOSE 5173
 
 # Start Nginx server
 # CMD ["nginx", "-g", "daemon off;"]
-CMD ["npm", "start" "--host", "0.0.0.0", "--port", "80"]
+CMD ["npm", "run", "dev", "--", "--host", "0.0.0.0"]
