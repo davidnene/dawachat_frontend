@@ -113,7 +113,7 @@ const ManagePrescriptions = () => {
       handleEditClose();
     } catch (error) {
       console.error("Error submitting prescription:", error.response?.data.detail || error);
-      alert("Error submitting prescription:", error.response?.data.detail || error);
+      alert("Prescription not found or was created by another doctor");
     }
 };
 
