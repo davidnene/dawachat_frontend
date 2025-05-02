@@ -112,8 +112,8 @@ const ManagePrescriptions = () => {
       fetchPrescriptions(selectedPatient);
       handleEditClose();
     } catch (error) {
-      console.error("Error submitting prescription:", error.response?.data || error);
-      alert("Error submitting prescription:", error.response?.data || error);
+      console.error("Error submitting prescription:", error.response?.data.detail || error);
+      alert("Error submitting prescription:", error.response?.data.detail || error);
     }
 };
 
