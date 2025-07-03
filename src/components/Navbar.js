@@ -12,15 +12,15 @@ const Navbar = () => {
 
   return (
     <AppBar position="static" color="primary">
-      <Toolbar>
+      <Toolbar sx={{ background: 'linear-gradient(135deg, #e3f2fd, #fff)'}}>
         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-          <Link to="/" style={{ textDecoration: "none", color: "inherit" }}>
-            Dawa Chat
+          <Link to="/" style={{ textDecoration: "none", color: "#1976d2" }}>
+            DawaChat
           </Link>
         </Typography>
 
         <Box>
-          <Button color="inherit" onClick={() => navigate("/login")}>
+          <Button style={{color: "#1976d2"}} onClick={() => navigate("/login")}>
             Login
           </Button>
         </Box>

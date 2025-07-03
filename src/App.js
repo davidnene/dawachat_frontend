@@ -26,6 +26,7 @@ const App = () => {
     <ThemeProvider theme={theme}>
       <Router>
         {!user ? <Navbar /> : <Header />}
+        {/* {user && <Header />} */}
         {user && <Sidebar />}
         
         <Routes>
