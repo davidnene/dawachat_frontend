@@ -63,7 +63,7 @@ const HomePage = () => {
         }}
         >
         <Typography variant="h2" gutterBottom>
-            Welcome to DawaChat
+            Welcome to dawaChat
         </Typography>
         <Typography variant="h5" sx={{ color: '#e3f2fd', mb: 4 }}>
             A powerful tool to help doctors manage dosage information and prescriptions with ease.

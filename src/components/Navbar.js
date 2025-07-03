@@ -15,7 +15,7 @@ const Navbar = () => {
       <Toolbar sx={{ background: 'linear-gradient(135deg, #e3f2fd, #fff)'}}>
         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
           <Link to="/" style={{ textDecoration: "none", color: "#1976d2" }}>
-            DawaChat
+            dawaChat
           </Link>
         </Typography>
 
