@@ -12,20 +12,25 @@ const Navbar = () => {
 
   return (
     <AppBar position="static" color="primary">
-      <Toolbar sx={{ background: 'linear-gradient(135deg, #e3f2fd, #fff)'}}>
+      <Toolbar sx={{ background: 'linear-gradient(135deg, #e3f2fd, #fff)' }}>
         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-          <Link to="/" style={{ textDecoration: "none", color: "#1976d2" }}>
-            dawaChat
+          <Link to="/" style={{ textDecoration: "none" }}>
+            <img 
+              src="dawaChat_logo.png" 
+              alt="dawaChat"
+              style={{ height: 50, verticalAlign: 'middle' }}
+            />
           </Link>
         </Typography>
 
         <Box>
-          <Button style={{color: "#1976d2"}} onClick={() => navigate("/login")}>
+          <Button style={{ color: "#1976d2" }} onClick={() => navigate("/login")}>
             Login
           </Button>
         </Box>
       </Toolbar>
-    </AppBar>
+</AppBar>
+
   );
 };
 
